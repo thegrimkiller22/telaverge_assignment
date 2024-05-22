@@ -1,0 +1,11 @@
+.app {
+  width: 100vw;
+  /* height: auto; */
+  /* border: 2px solid red; */
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+
+  /* border: 2px solid green; */
+}

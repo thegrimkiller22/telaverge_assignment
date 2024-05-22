@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='products.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+
+        <h1 class="heading">Our Products</h1>
+        <div class="product-list">
+            <!-- Loop through product data and generate product cards -->
+            {% for product in products %}
+
+            <div class="product-card">
+                <img src="{{ product.image }}" alt="image">
+                <h2 class="product-title">{{ product.name }}</h2>
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-price">${{ product.price }}</p>
+                <div class="card-bottom">
+                    <button class="category">{{product.category}}</button>
+                    <i id="{{ product.name.replace(' ','') }}" class=" ri-heart-line like_icon"
+                        onclick="handleProductClick(' {{ product.name }}', '{{ product.name }}' )"></i>
+                </div>
+            </div>
+
+            {% endfor %}
+            <!-- End of product card loop -->
+        </div>
+        <div class="pagination">
+            {% if page > 1 %}
+            <a href="/products?page={{ page - 1 }}">Previous</a>
+            {% endif %}
+            {% if page < num_pages %} <a href="/products?page={{ page + 1 }}">Next</a>
+                {% endif %}
+        </div>
+    </div>
+</body>
+<script>
+    const handleProductClick = async (id, title) => {
+        console.log(id)
+        id = id.replace(/ /g, '');
+        const element = document.getElementById(id);
+        if (element.classList.contains('ri-heart-line')) {
+            element.classList.remove('ri-heart-line');
+            element.classList.add('ri-heart-fill');
+            element.style.color = "red"
+        }
+        else {
+            element.classList.remove('ri-heart-fill');
+            element.classList.add('ri-heart-line');
+            element.style.color = "black"
+        }
+
+
+
+
+        console.log(id, title)
+        const res = await fetch('/record_interaction', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json' // Specify the content type as JSON
+            },
+            body: JSON.stringify({ product_id: title })
+
+        })
+
+        const data = await res.json();
+        console.log(data)
+    }
+</script>
+
+</html>

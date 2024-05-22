@@ -1,0 +1,11 @@
+ecommerce_app/
+    ├── app.py
+    ├── models.py
+    ├── recommendation.py
+    ├── search.py
+    ├── templates/
+    │   ├── index.html
+    │   ├── register.html
+    │   ├── login.html
+    │   └── dashboard.html
+    └── static/
