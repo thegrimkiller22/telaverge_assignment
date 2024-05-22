@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd assignment && python app.py\" \"cd user && npm run dev \"",
+    "start": "concurrently \"cd backend && python app.py\" \"cd frontend && npm run dev \"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
