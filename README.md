@@ -1,4 +1,4 @@
-#Telaverge Assignment
+# Telaverge Assignment
 This project is an system that provides product recommendations based on user interactions. It also includes a search functionality that integrates user preferences to boost the relevance of search results.
 
 ## Project Structure
