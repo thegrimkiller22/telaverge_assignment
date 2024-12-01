@@ -25,6 +25,7 @@ app.secret_key = 'mysecret'
 bcrypt = Bcrypt(app)
 
 client = MongoClient(MONGO_URI)
+print("Connected to MongoDB")
 db = client['ecommerce_db']
 users_collection = db['users']
 products_collection = db['products']

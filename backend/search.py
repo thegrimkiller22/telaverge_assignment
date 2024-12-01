@@ -14,6 +14,7 @@ load_dotenv()
 # Access the variables using os.environ.get()
 MONGO_URI = os.environ.get("MONGO_URI")
 client = MongoClient(MONGO_URI)
+print("Connected to MongoDB")
 db = client['ecommerce_db']
 products_collection = db['products']
 
